@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+           
+            function computerChoice(){
+                let num = Math.floor(Math.random()*3)+1;
+                let choice = "";
+                if(num==1)choice = "rock";
+                else if(num==2)choice = "paper";
+                else if(num==3) choice = "scissors";
+                return choice;
+            }
+          
+          function playRound(playerChoice, computer){
+            player = playerChoice.toLowerCase();
+            
+                switch(computer){
+                    case "rock":
+                        if(player =="scissors"){
+                            console.log("Rock beats Scissor, computer wins");
+                            return "computer"
+                            break;
+                        }else if(player =="paper"){
+                            console.log("Paper beats Rock, Player wins");
+                            return "player"
+                            break;
+                        }else if(player=="rock"){  return "tie";;
+                        break;
+                        }
+                    case "scissors":
+                        if(player =="rock"){
+                            console.log("Rock beats Scissor, player wins");
+                            return "player"
+                            break;
+                        }else if(player =="paper"){
+                            return "Scissor beats paper, computer wins";
+                            return "computer"
+                            break;
+                        }else if(player=="scissors"){
+                            return "tie";
+                            break;
+                        }
+                    case "paper":
+                        if(player =="rock"){
+                            console.log("Paper beats rock, computer wins");
+                            return "computer"
+                            break;
+                        }else if(player =="scissors"){
+                            console.log("Scissor beats paper, Player wins");
+                            return "player"
+                            break;
+                        }else if(player=="paper"){
+                            return "tie";
+                            break;
+                        }
+                    
+                }
+            
+          }
+          function game(){
+            let compWin=0; let playerWin=0;
+            let count=0;
+            while(count<5){
+                computer = computerChoice();
+          playerChoice = prompt("Enter a choice for the game: ");
+                let result = playRound(playerChoice,computer);
+                if(result =="computer"){compWin++;}
+                else if(result=="player"){playerWin++;}
+                count++;
+            }
+            if(compWin>playerWin){return "The computer has won "+compWin+
+            "  times.";}
+            else if(playerWin>compWin) {return "The player has won "+playerWin+" times";}
+            else return "its a tie!";
+          }
+          console.log(game());
+        </script>
+    </body>
+</html>
